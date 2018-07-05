@@ -1,35 +1,55 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apogorze <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/05 17:45:42 by apogorze          #+#    #+#             */
+/*   Updated: 2018/07/05 17:59:44 by apogorze         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putchar(char var)
+void  	ft_putchar(char a);
+
+void 	ft_putcomb(char a, char b, char c)
 {
-	write(1, &var, 1);
+	ft_putchar(a + '0');
+	ft_putchar(b + '0');
+	ft_putchar(c + '0');
+}
+
+void 	ft_putcombponc(char a, char b)
+{
+	ft_putchar(a);
+	ft_putchar(b);
 }
 
 void	ft_print_comb(void)
 {
-	char a;
-	char b;
-	char c;
+	 int a;
+	 int b;
+	 int c;
 
-	a = '0';
-	b = '1';
-	c = '2';
-	while(b < c && c < '9')
+	a = 0;
+	while(a <= 7)
 	{
-		ft_putchar(a);
-		ft_putchar(b);
-		ft_putchar(c);
-		c = c + 1;
-		ft_putchar(',');
-		ft_putchar(' ');			
+		b=a+1;
+		while(b <= 8)
+		{
+			c=b+1;
+			while(c <= 9)
+			{
+				ft_putcomb(a, b, c);
+				if(!(a == 7 && b ==8 && c == 9))
+				{
+					ft_putcomponc(',',' ');
+				}	
+				c++;
+			}
+		b++;
+		}	
+	a++;
 	}
-	b = b + 1;
-	c = b + 1;
-//:	while(a < b && b < '9')
-}
-
-int 	main(void)
-{
-	ft_print_comb();
-	return(0);
+	ft_putchar('\n');
 }
