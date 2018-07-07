@@ -12,50 +12,52 @@
 
 void 	ft_putchar(char c);
 
-void	ft_putcomb(char a, char b, char c, char d)
+void	ft_putnbr(int i)
 {
-	ft_putchar(a+'0');
-	ft_putchar(b+'0');
-	ft_putchar(' ');
-	ft_putchar(c+'0');
-	ft_putchar(d+'0');
-	if (!( a==9 && b==8 && c==9 && d==9 ))
+	if (i == -2147483648)
 	{
-		ft_putchar(',');
-		ft_putchar(' ');
+		ft_putchar('-');
+		ft_putchar('2');
+		i = 147483648;
+	}
+	if (i < 0)
+	{
+		ft_putchar('-');
+		i = i * -1;
+	}
+	if (i >= 1)
+	{
+		ft_putnbr(i/10);
+		ft_putchar((i%10) + '0');
 	}
 }
 
-void 	ft_print_comb2(char a)
+void 	ft_print_comb2(void)
 {
+	int  a;
+	int  b;
 
-	char b;
-	char c;
-	char d;
+	a = 0;
+	b = 1;
 
-	a=0;
-	b=0;
-	c=0;
-	d=1;
-
-		while (a <= 9)
+	while(a < 99)
+	{
+		while(b <= 99)
 		{
-			while(b <= 9)
-			{
-				while(c <= 9)
-					{
-						while(d <= 9)
-							{
-								ft_putcomb(a,b,c,d);
-								d=d+1;
-							}
-						d=0;
-						c=c+1;
-					}
-				c=0;
-				b=b+1;
-			}
-		b=0;
-		a=a+1;
+			if(a < 10) 
+				ft_putchar('0');
+			ft_putnbr(a);
+			ft_putchar(' ');
+			if(b < 10)
+				ft_putchar('0');
+			ft_putnbr(b);
+			if(!(a == 98 && b ==99))
+				ft_putchar(',');
+			b = b + 1;
 		}
+		b = a + 2;
+		a = a + 1;
+	}
+	ft_putchar('\n');
+	return;
 }
