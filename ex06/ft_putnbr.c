@@ -1,18 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apogorze <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/05 22:20:07 by apogorze          #+#    #+#             */
-/*   Updated: 2018/07/05 22:27:42 by apogorze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+void 	ft_putchar(char c);
 
-void 	ft_putchar(int a);
-
-void 	ft_putnbr(int nb)
+void	ft_putnbr(int i)
 {
-	ft_putchar('nb');
+	if (i == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		i = 147483648;
+	}
+	if (i < 0)
+	{
+		ft_putchar('-');
+		i = i * -1;
+	}
+	if (i >= 1)
+	{
+		ft_putnbr(i/10);
+		ft_putchar((i%10) + '0');
+	}
 }
